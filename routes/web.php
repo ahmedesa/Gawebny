@@ -118,7 +118,7 @@ Route::get('/dashbord/messages/{id}' , 'ContactController@show');
 
 
 /*=====  End of dashbord  ======*/
-auth()->login(\App\User::find(1));
+//auth()->login(\App\User::find(1));
 
 
 //});
