@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
           // $table->integer('score')->defualt(0);
-            $table->boolean('admin')->defualt(false);
+            $table->boolean('admin')->notNull()->defaultValue(false);
             $table->string('country_id')->nullable();
             $table->string('education')->nullable();
             $table->string('jop')->nullable();
             $table->text('discreption')->nullable();
             $table->string('language_id')->nullable();
-            $table->string('image')->defualt('defualt.png');
+            $table->string('image')->notNull()->defaultValue('defualt.png');
             $table->string('connection_account')->nullable();
             $table->rememberToken();
             $table->timestamps();
