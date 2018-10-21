@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 
 class UserSeeds extends Seeder
@@ -13,7 +14,7 @@ class UserSeeds extends Seeder
      */
     public function run()
     {
-    	Country::User( [
+    	User::User( [
     		'name'=>'ahmed',
     		'email'=>'ahmed@ahmed.com',
             'password' => Hash::make('ahmed6120')  , // secret
