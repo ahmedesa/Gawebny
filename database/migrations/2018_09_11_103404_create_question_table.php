@@ -17,10 +17,10 @@ class CreateQuestionTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->integer('views')->default(0);
-            $table->integer('votes')->default(0);
+            $table->integer('views')->notNull()->default(0);
+            $table->integer('votes')->notNull()->default(0);
             $table->integer('user_id');
-            $table->boolean('anonymous')->default(0);
+            $table->boolean('anonymous')->notNull()->default(0);
             $table->timestamps();
         });
     }

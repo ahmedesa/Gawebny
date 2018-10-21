@@ -17,9 +17,9 @@ class CreateAnswerTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('question_id');
-            $table->integer('votes')->defualt(0);
+            $table->integer('votes')->notNull()->default(0);
             $table->text('body');
-            $table->integer('best')->defualt(0); 
+            $table->integer('best')->notNull()->default(0); 
             $table->timestamps();
         });
     }
