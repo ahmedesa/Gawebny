@@ -113,7 +113,7 @@
     </div>
 </div>
 <div class="form-group">
- <div class="g-recaptcha" data-sitekey="6Le12XEUAAAAAMSBgKAesH7fj759L-eIO1aXdlwd"></div>
+ <div class="g-recaptcha" data-sitekey="6Lf1G3YUAAAAAMMtQjyz85cWmg6-d1mB8lU9DOsW"></div>
  @if ($errors->has('g-recaptcha-response'))
  <span class="invalid-feedback" role="alert">
     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
