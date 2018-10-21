@@ -29,6 +29,6 @@ class CreateQvotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Qvotes');
+        Schema::dropIfExists('qvotes');
     }
 }
