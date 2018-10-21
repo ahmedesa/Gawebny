@@ -38,12 +38,12 @@ return [
     'facebook' => [
         'client_id'     => '664656557268458',
         'client_secret' => '11bc24b92b2559a2f3187e4be182f364',
-        'redirect'      => 'http://localhost/Gawebny/public/login/facebook/callback',
+        'redirect'      => 'http://gawebny0.herokuapp.com/login/facebook/callback',
     ],
     'google' => [
         'client_id'     => '686711338715-nb1qqv75394080cbaka524jlh7uo8q29.apps.googleusercontent.com',
         'client_secret' => 'XcXt6Ycz12QTDZz0wU6xCsmV',
-        'redirect'      => 'http://localhost/Gawebny/public/login/google/callback',
+        'redirect'      => 'http://gawebny0.herokuapp.com/login/google/callback',
     ],
 
 ];
