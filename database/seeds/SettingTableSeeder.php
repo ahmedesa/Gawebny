@@ -25,6 +25,8 @@ class SettingTableSeeder extends Seeder
             array('name'=>'twitter'     ,'value'=>'aaaaaaaaaaa'),
             array('name'=>'terms_en'     ,'value'=>'aaaaaaaaaaa'),
             array('name'=>'terms_ar'     ,'value'=>'aaaaaaaaaaa'),
+            array('name'=>'lang'     ,'value'=>'en'),
+
 
         ));    }
     }

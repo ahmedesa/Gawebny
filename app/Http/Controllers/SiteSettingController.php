@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\SiteSetting;
 use Illuminate\Http\Request;
-use App\Http\Requests\SiteSettingsRequest;
-use App\Helpers\Helper;
 
 class SiteSettingController extends Controller
 {
@@ -14,7 +12,7 @@ class SiteSettingController extends Controller
 		$settings = SiteSetting::all();
 		return view('dashbord.sitesetting' , compact('settings'));
 	}
-	public function update(SiteSettingsRequest $request , SiteSetting $sitesetting)
+	public function update(Request $request , SiteSetting $sitesetting)
 	{
 		$this->validate($request,[
 				'logo' => 'image|mimes:jpeg,bmp,png,jpg',
@@ -27,7 +25,7 @@ class SiteSettingController extends Controller
 
 		}
 		if ($request->file('logo')) {
-			$logo =Helper::uplodeImg($request->file('logo'));
+			$logo =uplodeImg($request->file('logo'));
 			$sitesettingUpdate = $sitesetting->where('name','logo')->get()[0]; 
 			$sitesettingUpdate->fill([
 				'value' => $logo

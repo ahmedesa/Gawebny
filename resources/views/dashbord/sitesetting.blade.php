@@ -46,10 +46,30 @@ Site Settings
 		<div class="m-portlet__body">
 			<div class="form-group m-form__group row ">
 				<label class="col-lg-2 col-form-label">
+					Site main Language:
+				</label>
+				<div class="col-lg-10">
+					<select class="form-control m-input m-input--air" name="lang">
+						<option {{Setting('lang') == 'en' ?'selected ="selected"' :''}} value="en">
+							english
+						</option>
+						<option {{Setting('lang') == 'ar' ?'selected ="selected"' :''}} value ="ar">
+							arabic
+						</option>
+					</select>
+					@if ($errors->has('lang'))
+					<span class="form-control-feedback m--font-danger">
+						<strong>{{ $errors->first('lang') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+			<div class="form-group m-form__group row ">
+				<label class="col-lg-2 col-form-label">
 					Site Name In English:
 				</label>
 				<div class="col-lg-10">
-					<input class="form-control m-input m-input--air" required type="text" name="sitename_en" value="{{$settings->where('name' ,'sitename_en')->first()->value}}">
+					<input class="form-control m-input m-input--air" required type="text" name="sitename_en" value="{{Setting('sitename_en')}}">
 					@if ($errors->has('sitename_en'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('sitename_en') }}</strong>
@@ -62,7 +82,7 @@ Site Settings
 					Site Name In Arabic:
 				</label>
 				<div class="col-lg-10">
-					<input class="form-control m-input m-input--air" type="text" required  name="sitename_ar" value="{{$settings->where('name' ,'sitename_ar')->first()->value}}" >
+					<input class="form-control m-input m-input--air" type="text" required  name="sitename_ar" value="{{Setting('sitename_ar')}}" >
 					@if ($errors->has('sitename_ar'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('sitename_ar') }}</strong>
@@ -75,7 +95,7 @@ Site Settings
 					Site Discrebtion In English
 				</label>
 				<div class="col-lg-10">
-					<textarea required class="form-control m-input m-input--air" rows="3" name="dis_en" >{{$settings->where('name' ,'dis_en')->first()->value}} </textarea>
+					<textarea required class="form-control m-input m-input--air" rows="3" name="dis_en" >{{Setting('dis_en')}} </textarea>
 					<span class="m-form__help">
 						when someone search for the site
 					</span>
@@ -91,7 +111,7 @@ Site Settings
 					Site Discrebtion In Arabic
 				</label>
 				<div class="col-lg-10">
-					<textarea required class="form-control m-input m-input--air" rows="3"  name="dis_ar" >{{$settings->where('name' ,'dis_ar')->first()->value}}</textarea>
+					<textarea required class="form-control m-input m-input--air" rows="3"  name="dis_ar" >{{Setting('dis_ar')}}</textarea>
 					<span class="m-form__help">
 						when someone search for the site
 					</span>
@@ -107,7 +127,7 @@ Site Settings
 					Email:
 				</label>
 				<div class="col-lg-10">
-					<input class="form-control m-input m-input--air" required  type="email" name="email" value="{{$settings->where('name' ,'email')->first()->value}}">
+					<input class="form-control m-input m-input--air" required  type="email" name="email" value="{{Setting('email')}}">
 					<span class="m-form__help">
 						website Main Email
 					</span>
@@ -123,7 +143,7 @@ Site Settings
 					Site Copyrights In English:
 				</label>
 				<div class="col-lg-10">
-					<input required class="form-control m-input m-input--air" type="text" name="copyrights_en" value="{{$settings->where('name' ,'copyrights_en')->first()->value}}">
+					<input required class="form-control m-input m-input--air" type="text" name="copyrights_en" value="{{Setting('copyrights_en')}}">
 					@if ($errors->has('copyrights_en'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('copyrights_en') }}</strong>
@@ -136,7 +156,7 @@ Site Settings
 					Site Copyrights In Arabic:
 				</label>
 				<div class="col-lg-10">
-					<input required class="form-control m-input m-input--air" type="text" name="copyrights_ar" value="{{$settings->where('name' ,'copyrights_ar')->first()->value}}">
+					<input required class="form-control m-input m-input--air" type="text" name="copyrights_ar" value="{{Setting('copyrights_ar')}}">
 					@if ($errors->has('copyrights_ar'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('copyrights_ar') }}</strong>
@@ -149,7 +169,7 @@ Site Settings
 					FacebookLink:
 				</label>
 				<div class="col-lg-10">
-					<input required class="form-control m-input m-input--air" type="text" name="facebook" value="{{$settings->where('name' ,'facebook')->first()->value}}">
+					<input required class="form-control m-input m-input--air" type="text" name="facebook" value="{{Setting('facebook')}}">
 					@if ($errors->has('facebook'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('facebook') }}</strong>
@@ -162,7 +182,7 @@ Site Settings
 					TwitterLink:
 				</label>
 				<div class="col-lg-10">
-					<input required class="form-control m-input m-input--air" type="text" name="twitter" value="{{$settings->where('name' ,'twitter')->first()->value}}">
+					<input required class="form-control m-input m-input--air" type="text" name="twitter" value="{{Setting('twitter')}}">
 					@if ($errors->has('twitter'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('twitter') }}</strong>
@@ -175,7 +195,7 @@ Site Settings
 					Site Terms In English
 				</label>
 				<div class="col-lg-10">
-					<textarea class="summernote" name ="terms_en"> {{$settings->where('name' ,'terms_en')->first()->value}}</textarea>
+					<textarea class="summernote" name ="terms_en"> {{Setting('terms_en')}}</textarea>
 					@if ($errors->has('terms_en'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('terms_en') }}</strong>
@@ -189,7 +209,7 @@ Site Settings
 					Site Terms In Arabic
 				</label>
 				<div class="col-lg-10">
-					<textarea required class="summernote" name ="terms_ar"> {{$settings->where('name' ,'terms_ar')->first()->value}}</textarea>
+					<textarea required class="summernote" name ="terms_ar"> {{Setting('terms_ar')}}</textarea>
 					@if ($errors->has('terms_ar'))
 					<span class="form-control-feedback m--font-danger">
 						<strong>{{ $errors->first('terms_ar') }}</strong>
@@ -201,7 +221,7 @@ Site Settings
 			<div class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-10">
-					<img style="max-width: 100px !important;" src="{{ asset('Gawebny/img/'.$settings->where('name' ,'logo')->first()->value) }}">
+					<img style="max-width: 100px !important;" src="{{ asset('Gawebny/img/'.Setting('logo')) }}">
 				</div>
 			</div>
 			<div class="form-group m-form__group row">

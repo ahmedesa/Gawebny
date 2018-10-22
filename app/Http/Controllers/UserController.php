@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Helpers\Helper;
 use App\Http\Requests\UserRequest;
 use App\Question;
 use App\SavedQ;
@@ -87,7 +85,7 @@ class UserController extends Controller
 		{
 			$user = User::findOrFail(Auth::id());
 			if ($request->file('image')) {
-				$image =Helper::uplodeImg($request->file('image'));
+				$image =uplodeImg($request->file('image'));
 				$user->update(['image'=>$image]);
 
 			}

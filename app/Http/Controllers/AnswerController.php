@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\AVote;
 use App\Answer;
-use App\Helpers\Helper;
 use App\Notifications\NewAnswer;
 use App\Notifications\NewMention;
 use App\Question;
@@ -27,7 +26,7 @@ class AnswerController extends Controller
 			'body' =>$request->answer, 
 		]);
 		
-		$mention = Helper::CheckExistMention($request->answer);
+		$mention =CheckExistMention($request->answer);
 		if ($mention) {
 			foreach ((array)$mention as $key) {
 				if (User::where('name' ,$key)->first()) {
