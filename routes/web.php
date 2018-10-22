@@ -91,29 +91,31 @@ Route::get('/setLanguage/{lang}', 'LanguagesController@set')->name('set.language
 /*================================
 =            dashbord            =
 ================================*/
+Route::group(['middleware' => ['web','admin']], function() {
 
-Route::get('/dashbord' , 'DashbordController@index');
-Route::get('/dashbord/setting' , 'SiteSettingController@index');
-Route::put('/dashbord/setting' , 'SiteSettingController@update');
+	Route::get('/dashbord' , 'DashbordController@index');
+	Route::get('/dashbord/setting' , 'SiteSettingController@index');
+	Route::put('/dashbord/setting' , 'SiteSettingController@update');
 
-/*----------  user  ----------*/
-Route::get('/dashbord/users/{id?}' , 'DashbordController@users');
-Route::get('/dashbord/users/{id?}/delete' , 'UserController@destroy');
-Route::put('/dashbord/users/{id?}/delete' , 'UserController@destroy');
+	/*----------  user  ----------*/
+	Route::get('/dashbord/users/{id?}' , 'DashbordController@users');
+	Route::get('/dashbord/users/{id?}/delete' , 'UserController@destroy');
+	Route::put('/dashbord/users/{id?}/delete' , 'UserController@destroy');
 
 
 
-/*----------  categories  ----------*/
+	/*----------  categories  ----------*/
 
-Route::get('/dashbord/categories' , 'CategoryController@dashIndex');
-Route::post('/dashbord/category' , 'CategoryController@create');
-Route::get('/dashbord/category/{id}/delete' , 'CategoryController@destroy');
-Route::put('user/admin/{id}' , 'UserController@MakeAdmin');
-/*----------  contact  ----------*/
+	Route::get('/dashbord/categories' , 'CategoryController@dashIndex');
+	Route::post('/dashbord/category' , 'CategoryController@create');
+	Route::get('/dashbord/category/{id}/delete' , 'CategoryController@destroy');
+	Route::put('user/admin/{id}' , 'UserController@MakeAdmin');
+	/*----------  contact  ----------*/
 
-Route::get('/dashbord/messages' , 'ContactController@dashbordIndex');
-Route::get('/dashbord/messages/{id}' , 'ContactController@show');
+	Route::get('/dashbord/messages' , 'ContactController@dashbordIndex');
+	Route::get('/dashbord/messages/{id}' , 'ContactController@show');
 
+});
 
 
 

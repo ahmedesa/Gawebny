@@ -38,11 +38,18 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LanguageSwitcher::class,
         ],
 
-        'api' => [
-            'throttle:60,1',
-            'bindings',
-        ],
-    ];
+
+        'admin' => [
+          \Illuminate\Auth\Middleware\Authenticate::class,
+          \App\Http\Middleware\Admin::class,
+
+
+      ],
+      'api' => [
+        'throttle:60,1',
+        'bindings',
+    ],
+];
 
     /**
      * The application's route middleware.
