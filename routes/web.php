@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +12,6 @@
 /*================================
 =            Question            =
 ================================*/
-
 Route::get('/', 'QuestionController@index');
 Route::get('/question/save/{id}', 'QuestionController@SaveQuestion');
 Route::get('/question/unsave/{id}', 'QuestionController@UnSaveQuestion');
@@ -23,9 +21,7 @@ Route::get('/question/{id}/{slug?}', 'QuestionController@show');
 Route::delete('/question/{id}', 'QuestionController@destroy');
 Route::post('question/upvote', 'QuestionController@upvote');
 Route::post('question/downvote', 'QuestionController@downvote');
-
 /*=====  End of Question  ======*/
-
 /*==============================
 =            Answer            =
 ==============================*/
@@ -34,7 +30,6 @@ Route::get('/makebest/{id}', 'AnswerController@MakeBest');
 Route::delete('/answer/{id}'  , 'AnswerController@destroy');
 Route::post('answer/upvote', 'AnswerController@upvote');
 Route::post('answer/downvote', 'AnswerController@downvote');
-
 /*=====  End of Answer  ======*/
 /*============================
 =            user            =
@@ -55,72 +50,55 @@ Route::get('/notification', 'HomeController@Notification');
 Route::get('/terms', 'HomeController@Terms');
 Route::get( '/contact', 'ContactController@index');
 Route::post('/contact', 'ContactController@save');
-
-
-
-
 /*=====  End of website  ======*/
-
-
+/*===============================
+=            reports            =
+===============================*/
+Route::post( '/reprot', 'ReportController@send');
+/*=====  End of reports  ======*/
 /*=====  End of user  ======*/
 /*==============================
 =            search            =
 ==============================*/
 Route::get('search', 'SearchController@search')->name('search');
-
 /*=====  End of search  ======*/
-
-
 Route::get('/category/{slug}' , 'CategoryController@index');
-
 /*=============================
 =            login            =
 =============================*/
-
 Auth::routes(['verify' => true]);
 // OAuth Routes
-
 Route::get('/login/{SocialProvider}', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/{SocialProvider}/callback', 'Auth\LoginController@handleCallback');
 /*=====  End of login  ======*/
 Route::get('/setLanguage/{lang}', 'LanguagesController@set')->name('set.language');
-
-
-
-
 /*================================
 =            dashbord            =
 ================================*/
 Route::group(['middleware' => ['web','admin']], function() {
-
 	Route::get('/dashbord' , 'DashbordController@index');
 	Route::get('/dashbord/setting' , 'SiteSettingController@index');
 	Route::put('/dashbord/setting' , 'SiteSettingController@update');
-
 	/*----------  user  ----------*/
 	Route::get('/dashbord/users/{id?}' , 'DashbordController@users');
 	Route::get('/dashbord/users/{id?}/delete' , 'UserController@destroy');
 	Route::put('/dashbord/users/{id?}/delete' , 'UserController@destroy');
-
-
-
 	/*----------  categories  ----------*/
-
 	Route::get('/dashbord/categories' , 'CategoryController@dashIndex');
 	Route::post('/dashbord/category' , 'CategoryController@create');
 	Route::get('/dashbord/category/{id}/delete' , 'CategoryController@destroy');
 	Route::put('user/admin/{id}' , 'UserController@MakeAdmin');
 	/*----------  contact  ----------*/
-
 	Route::get('/dashbord/messages' , 'ContactController@dashbordIndex');
 	Route::get('/dashbord/messages/{id}' , 'ContactController@show');
+	Route::get('/dashbord/messages/{id}/delete' , 'ContactController@destroy');
 
+
+	
+	Route::get('/dashbord/reports' , 'ReportController@index');
+	Route::get('/dashbord/reports/{id}' , 'ReportController@show');
+	Route::get('/dashbord/reports/{id}/delete' , 'ReportController@destroy');
 });
-
-
-
 /*=====  End of dashbord  ======*/
 //auth()->login(\App\User::find(1));
-
-
 //});

@@ -83,6 +83,11 @@ class User extends Authenticatable /* implements  MustVerifyEmail */
 
         return $this->belongsTo(Country::class ,'country_id');
     }
+    
+    public function report()
+    {
+        return $this->hasMany(Report::class);
+    }
     public function language()
     {
 

@@ -32,4 +32,9 @@ class ContactController extends Controller
 		$message->save();
 		return view('dashbord.messages.view',compact('message'));
 	}
+	public function destroy($id)
+	{
+		Report::findOrFail($id)->delete();
+		return back()->withFlashMessage('deleted successfully');
+	}
 }

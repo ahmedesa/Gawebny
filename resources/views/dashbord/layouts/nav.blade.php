@@ -41,18 +41,26 @@ data-menu-scrollable="false" data-menu-dropdown-timeout="500"
 			</span>
 		</a>
 	</li>
-{{--<li class="m-menu__item " aria-haspopup="true" >
-		<a  href="{{ url('/dashbord/users') }}" class="m-menu__link ">
+	<li class="m-menu__item " aria-haspopup="true" >
+		<a  href="{{ url('/dashbord/reports') }}" class="m-menu__link ">
 			<i class="m-menu__link-icon fa  fa-ban"></i>
 			<span class="m-menu__link-title">
 				<span class="m-menu__link-wrap">
 					<span class="m-menu__link-text">
 
-					Reports										</span>
+						Reports									
+					</span>
+					@if(\App\Report::where('seen',false)->count() != 0)
+					<span class="m-menu__link-badge">
+						<span class="m-badge m-badge--danger">
+							{{\App\Report::where('seen',false)->count()}}
+						</span>
+					</span>
+					@endif
 				</span>
 			</span>
 		</a>
-	</li>--}}
+	</li>
 	<li class="m-menu__item " aria-haspopup="true" >
 		<a  href="{{ url('/dashbord/categories') }}" class="m-menu__link ">
 			<i class="m-menu__link-icon fa fa-list"></i>
