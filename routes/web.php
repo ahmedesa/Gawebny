@@ -94,10 +94,12 @@ Route::group(['middleware' => ['web','admin']], function() {
 	Route::get('/dashbord/messages/{id}/delete' , 'ContactController@destroy');
 
 
-	
 	Route::get('/dashbord/reports' , 'ReportController@index');
 	Route::get('/dashbord/reports/{id}' , 'ReportController@show');
 	Route::get('/dashbord/reports/{id}/delete' , 'ReportController@destroy');
+	Route::get('/dashbord/question/{id?}/delete' , 'ReportController@destroyQuestion');
+	Route::get('/dashbord/answer/{id?}/delete' , 'ReportController@destroyAnswer');
+
 });
 /*=====  End of dashbord  ======*/
 //auth()->login(\App\User::find(1));

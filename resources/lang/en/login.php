@@ -8,6 +8,7 @@ login page
 
 'sign_in' => 'Sign In',//
 'sign_up' => 'Or Sign Up',//
+'user_name' => 'User Name',
 'password' => 'Password',//
 'remember_me' => 'Remember Me',//
 'login' => 'Login',//

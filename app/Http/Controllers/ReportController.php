@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\AVote;
+use App\Answer;
+use App\Category;
+use App\QVote;
+use App\Question;
 use App\Report;
+use App\SavedQ;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -35,5 +41,26 @@ class ReportController extends Controller
 	{
 		Report::findOrFail($id)->delete();
 		return back()->withFlashMessage('deleted successfully');
+	}
+	public function destroyAnswer($id)
+	{
+		Answer::findOrFail($id)->delete();
+		AVote::where('answer_id' , $id)->delete();
+
+		return back()->withFlashMessage('The Answer Deleted Successfully');
+
+	}
+	public function destroyQuestion($id)
+	{
+		$question = Question::findOrFail($id);
+		foreach ($question->category as $cat) {
+			$category = Category::findOrFail($cat);
+			$question->category()->detach($category); 
+		}
+		QVote::where('question_id' , $id)->delete();
+		SavedQ::where('question_id' , $id)->delete();
+		Answer::where('question_id' , $id)->delete();
+		$question->delete();
+		return back()->withFlashMessage('The question Deleted Successfully');  
 	}
 }

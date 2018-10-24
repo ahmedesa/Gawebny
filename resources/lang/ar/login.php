@@ -11,6 +11,7 @@ login page
 'password' => 'الرقم السري',//
 'remember_me' => 'تذكرني',//
 'login' => 'تسجيل الدخول',//
+'user_name' => 'اسم المستخدم',
 'email' => 'البريد الالكتروني',
 'confirm_password' => 'تاكيد البريد الالكتروني',//
 'register' => 'تسجيل',//
