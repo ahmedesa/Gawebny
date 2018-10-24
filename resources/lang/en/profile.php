@@ -39,5 +39,9 @@ return[
 'The_New_Password' => 'The New Password',
 'Repeat_The_New_Password' => 'Repeat The New Password',
 'save' =>'save',
-'click_here_to_send_request' =>'click here to send request'
+'click_here_to_send_request' =>'click here to send request',
+'Report_this_account' =>'Report this account',
+'Report' =>'Report',
+'Report_Details' =>'Report Details',
+
 ];

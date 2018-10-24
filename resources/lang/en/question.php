@@ -18,6 +18,9 @@ return [
 'Related_Questions' => 'Related Questions',
 'Edit' => 'Edit',
 'edit_body' => 'Edit The Question Body',
+'Report_this_question' => 'Report this question',
+'Report_this_answer' => 'Report this answer',
+
 
 
 ];

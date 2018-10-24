@@ -38,6 +38,11 @@ return[
 'The_New_Password' => 'كلمة السر الجديدة',
 'Repeat_The_New_Password' => 'اعد كتابة كلمة السر الجديدة',
 'save' =>'حفظ' ,
-'click_here_to_send_request' =>'اضغط هنا لارسال بريد التفعيل'
+'click_here_to_send_request' =>'اضغط هنا لارسال بريد التفعيل' ,
+'Report_this_account' =>'الابلاغ عن هذا الحساب',
+'Report' =>'إبلاغ',
+'Report_Details' =>'تفاصيل الابلاغ',
+
+
 
 ];

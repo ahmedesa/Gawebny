@@ -18,6 +18,9 @@ return [
 'Related_Questions' => 'اساله مشابهه',
 'Edit' => 'تعديل',
 'edit_body' => 'التعديل علي السئال',
+'Report_this_question' => 'الابلاغ عن هذا السؤال',
+'Report_this_answer' => 'الابلاغ عن هذة الاجابة',
+
 
 
 ];
