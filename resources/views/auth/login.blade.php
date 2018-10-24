@@ -37,7 +37,7 @@
             <form method="POST" action="{{ route('login') }}">
               @csrf
               <div class="form-group">
-                  <input placeholder="{{trans('login.user_name')}}" id="email" type="email" class="form-control input-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                  <input placeholder="{{trans('login.email')}}" id="email" type="email" class="form-control input-lg {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
                   @if ($errors->has('email'))
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $errors->first('email') }}</strong>
