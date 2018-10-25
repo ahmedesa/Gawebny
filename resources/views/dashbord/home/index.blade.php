@@ -152,7 +152,7 @@ Dashboard
 							@foreach($lastUsers as $user)
 							<div class="m-widget4__item">
 								<div class="m-widget4__img m-widget4__img--pic">
-									<img src="assets/app/media/img/users/100_4.jpg" alt="">
+									<img src="{{ asset('Gawebny/img/'.$user->image) }}" alt="">
 								</div>
 								<div class="m-widget4__info">
 									<span class="m-widget4__title">
@@ -164,8 +164,8 @@ Dashboard
 									</span>
 								</div>
 								<div class="m-widget4__ext">
-									<a href="#" class="m-btn m-btn--pill m-btn--hover-brand btn btn-sm btn-secondary">
-										Follow
+									<a href="{{ url('dashbord/users/'.$user->id) }}" class="m-btn m-btn--pill m-btn--hover-brand btn btn-sm btn-secondary">
+										view
 									</a>
 								</div>
 							</div>
@@ -448,24 +448,49 @@ Dashboard
 	</div>
 </div>
 <div class="m-portlet m-portlet--tab">
-	<div class="m-portlet__head">
-		<div class="m-portlet__head-caption">
-			<div class="m-portlet__head-title">
-				<span class="m-portlet__head-icon m--hide">
-					<i class="la la-gear"></i>
-				</span>
-				<h3 class="m-portlet__head-text">
-				Pie Chart 3
-				</h3>
+	<div class="m-portlet m-portlet--tab">
+		<div class="m-portlet__head">
+			<div class="m-portlet__head-caption">
+				<div class="m-portlet__head-title">
+					<span class="m-portlet__head-icon m--hide">
+						<i class="la la-gear"></i>
+					</span>
+					<h3 class="m-portlet__head-text">
+					Categories share percantage
+					</h3>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="m-portlet__body">
-		<div id="m_flotcharts_9" style="height: 300px;"></div>
+		<div class="m-portlet__body">
+		<center>	all Questions : {{$allQuestion}} </center>
+			<div id="m_flotcharts_9" style="height: 500px;"></div>
+		</div>
 	</div>
 </div>
 @endsection
 @section('footer')
 <script type="text/javascript" src="{{ asset('assets/vendors/custom/flot/flot.bundle.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('assets/demo/default/custom/components/charts/flotcharts.js') }}" ></script>
+<!--script type="text/javascript" src="{{-- asset('assets/app/js/dashboard.js') --}}" ></script-->
+<script type="text/javascript">
+	
+	jQuery(document).ready(function () {
+		$.plot($("#m_flotcharts_9"),[
+			@foreach (\App\Category::percantage() as $key =>$cat)
+			{
+				label: '{{$cat['name']}}',
+				data: {{$cat['value']}}
+			},
+			@endforeach
+			], {
+				series: {
+					pie: {
+						show: !0
+					}
+				},
+				legend: {
+					show: !1
+				}
+			})
+	});
+</script>
 @endsection
