@@ -147,7 +147,7 @@ Dashboard
 			<div class="m-portlet__body">
 				<div class="tab-content">
 					<div class="tab-pane active" id="m_widget4_tab1_content">
-						<!--begin::Widget 14-->
+						<!--begin::Widget 14-->git addlfl
 						<div class="m-widget4">
 							@foreach($lastUsers as $user)
 							<div class="m-widget4__item">

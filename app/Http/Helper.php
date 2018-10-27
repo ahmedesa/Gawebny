@@ -34,7 +34,6 @@ if (!function_exists('searchLink')) {
 
 	function searchLink($type , $options) {
 		return route('search' , array_merge(array_except(request( )->input() , [$type]) ,[$type =>$options])) ;
-	}
 }
 
 
