@@ -30,4 +30,11 @@ if (!function_exists('Setting')) {
 		return App\SiteSetting::where('name',$setting)->first()->value;
 	}
 }
+if (!function_exists('searchLink')) {
+
+	function searchLink($type , $options) {
+		return route('search' , array_merge(array_except(request( )->input() , [$type]) ,[$type =>$options])) ;
+	}
+}
+
 
