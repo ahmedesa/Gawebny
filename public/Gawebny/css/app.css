@@ -325,3 +325,9 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
     border: none;
     cursor: pointer;
 }
+.unRead{
+  background-color: #e5e5e5 
+}
+.NotList{
+    cursor: pointer;
+}
