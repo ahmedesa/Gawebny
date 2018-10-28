@@ -44,6 +44,14 @@
 			$('.category-multiple').select2();
 		});
 	</script> 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".NotList").click(function(){
+				$(".NotCount").hide();
+			});
+
+		});	
+	</script>
 	@yield('footer')
 	@include('Gawebny.layouts.fmessage')
 </body>

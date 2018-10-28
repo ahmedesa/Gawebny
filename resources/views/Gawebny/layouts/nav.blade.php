@@ -15,8 +15,13 @@
         @auth
 
         <li class="dropdown nav-item  ">
-          <a class="dropdown-toggle nav-link " id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <span> <i class="fa fa-bell"></i> {{ trans('layout.notification') }} <span class="badge badge-danger">{{Auth::user()->unreadNotifications()->count()}}</span> </span>
+          <a class="dropdown-toggle nav-link  NotList" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span> <i class="fa fa-bell"></i> 
+              {{ trans('layout.notification') }} 
+
+              @if(Auth::user()->unreadNotifications()->count() != 0 )
+              <span class="badge badge-danger NotCount">{{Auth::user()->unreadNotifications()->count()}}</span> </span>
+              @endif
           </a>
 
           <div class="dropdown-menu" >
