@@ -16,7 +16,7 @@
 
         <li class="dropdown nav-item  ">
           <a class="dropdown-toggle nav-link " id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <span> <i class="fa fa-bell"></i> {{ trans('layout.notification') }}</span>
+            <span> <i class="fa fa-bell"></i> {{ trans('layout.notification') }} <span class="badge badge-danger">{{Auth::user()->unreadNotifications()->count()}}</span> </span>
           </a>
 
           <div class="dropdown-menu" >
@@ -30,8 +30,9 @@
 
             @foreach (Auth::user()->notifications()->take(5)->get()  as $n)
             @if ($n->type == 'App\Notifications\NewAnswer')
-            <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item">
+            <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
              <strong> {{ trans('layout.new_question') }} {{str_limit($n->data['title'] , 10)}} </strong>  
+             {{$n->markAsRead()}}
              <small> {{$n->created_at->diffForHumans()}} </small>
            </a>
            @endif
@@ -39,14 +40,16 @@
            <a class="dropdown-item">{{ trans('layout.wellcome') }}</a>
            @endif
            @if ($n->type == 'App\Notifications\NewQUpvote')
-           <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item">
+           <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
              <strong> {{ trans('layout.new_upvote') }} {{str_limit($n->data['title'] , 10)}} </strong>  
+             {{$n->markAsRead()}}
              <small> {{$n->created_at->diffForHumans()}} </small>
            </a>          
            @endif
            @if ($n->type == 'App\Notifications\NewMention')
-           <a href="{{ url('/question/'.$n->data['question_id'].'#comment'.$n->data['id'] )}}" class="dropdown-item">
+           <a href="{{ url('/question/'.$n->data['question_id'].'#comment'.$n->data['id'] )}}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
              <strong> {{\App\User::find($n->data['user_id'])->name}} {{ trans('layout.new_mention') }} {{strip_tags(str_limit($n->data['body'] , 10))}} </strong>  
+             {{$n->markAsRead()}}
              <small> {{$n->created_at->diffForHumans()}} </small>
            </a>          
            @endif
