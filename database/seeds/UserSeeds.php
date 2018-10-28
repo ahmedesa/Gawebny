@@ -15,11 +15,10 @@ class UserSeeds extends Seeder
     public function run()
     {
     	User::create( [
-    		'name'=>'ahmed',
-    		'email'=>'ahmed@ahmed.com',
-            'password' => Hash::make('ahmed6120')  , // secret
+    		'name'=>'admin',
+    		'email'=>'admin@admin.com',
+            'password' => Hash::make('admin')  , // secret
             'remember_token' => str_random(10),
-            'image' => '5bc6433b4406215397r19995index.jpg',
             'admin' => true ,
 
     ]);

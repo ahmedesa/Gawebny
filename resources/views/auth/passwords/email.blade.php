@@ -1,11 +1,13 @@
-@extends('layouts.app')
-
+@extends('Gawebny.layouts.layout')
+@section('title')
+{{ trans('home.home') }}
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div style="background-color: #FFFFFF " class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +15,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <br>
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
@@ -32,6 +34,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
+                            <br>
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Send Password Reset Link') }}
@@ -39,6 +42,7 @@
                             </div>
                         </div>
                     </form>
+                    <br>
                 </div>
             </div>
         </div>

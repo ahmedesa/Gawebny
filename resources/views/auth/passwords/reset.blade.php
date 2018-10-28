@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('Gawebny.layouts.layout')
+@section('title')
+{{ trans('home.home') }}
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
