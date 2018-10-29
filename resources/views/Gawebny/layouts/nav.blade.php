@@ -43,6 +43,8 @@
            @endif
            @if ($n->type == 'App\Notifications\NewUser')
            <a class="dropdown-item">{{ trans('layout.wellcome') }}</a>
+                        {{$n->markAsRead()}}
+
            @endif
            @if ($n->type == 'App\Notifications\NewQUpvote')
            <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
