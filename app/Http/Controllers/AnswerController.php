@@ -42,7 +42,7 @@ class AnswerController extends Controller
 
 			SendNotification( 
 				' <strong> '.trans('layout.new_question').' '. str_limit(Question::find($request->question_id)->title , 10).' </strong>'
-				,url('question/'.Question::find($request->question_id)->id.''.str_slug(Question::find($request->question_id)->title)) 
+				,url('question/'.Question::find($request->question_id)->id.'/'.str_slug(Question::find($request->question_id)->title)) 
 				,'about a minute ago',$user_question);
 		}
 		return back()->withFlashMessage('The Answer Posted Successfully');

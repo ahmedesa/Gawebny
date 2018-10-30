@@ -16,7 +16,7 @@
       @if(!Auth::user()->notifications->isEmpty())
       @foreach (Auth::user()->notifications()->take(5)->get()  as $n)
       @if ($n->type == 'App\Notifications\NewAnswer')
-      <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
+      <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
         <strong> {{ trans('layout.new_question') }} {{str_limit($n->data['title'] , 10)}} </strong>
         <small> {{$n->created_at->diffForHumans()}} </small>
       </a>
@@ -25,7 +25,7 @@
       <a class="dropdown-item">{{ trans('layout.wellcome') }}</a>
       @endif
       @if ($n->type == 'App\Notifications\NewQUpvote')
-      <a href="{{ url('question/'.$n->data['id'].''.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
+      <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
         <strong> {{ trans('layout.new_upvote') }} {{str_limit($n->data['title'] , 10)}} </strong>
         <small> {{$n->created_at->diffForHumans()}} </small>
       </a>
