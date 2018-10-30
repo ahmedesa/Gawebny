@@ -65,7 +65,7 @@
     var notificationsCountElem = notificationsToggle.find('span[data-count]');
     var notificationsCount     = parseInt(notificationsCountElem.data('count'));
     var notifications          = notificationsWrapper.find('.notification');
-    var channelName             = {{Auth::id()}};
+    var channelName            = {{Auth::id()}};
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
         var pusher = new Pusher('b948a1dfc499f62a98af', {
