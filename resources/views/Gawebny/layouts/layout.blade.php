@@ -68,7 +68,7 @@
     var channelName            = {{Auth::id()}};
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
-        var pusher = new Pusher('b948a1dfc499f62a98af', {
+        var pusher = new Pusher('{{env('PUSHER_APP_KEY')}}', {
             cluster: 'eu',
             encrypted: true
         });
