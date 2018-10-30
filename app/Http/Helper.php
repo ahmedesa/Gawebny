@@ -48,9 +48,9 @@ if (!function_exists('SendNotification')) {
 		);
 
 		$pusher = new Pusher(
-			'b948a1dfc499f62a98af',
-			'9bf5496a37e72f62291d',
-			'634318',
+			env('PUSHER_APP_KEY'),
+			env('PUSHER_APP_SECRET'),
+			env('PUSHER_APP_ID'),
 			$options
 		);
 
