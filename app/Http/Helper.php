@@ -1,5 +1,7 @@
 <?php
 
+use Pusher\Pusher;
+
 if (!function_exists('uplodeImg')) {
 	function uplodeImg($image)
 	{
@@ -30,10 +32,28 @@ if (!function_exists('Setting')) {
 		return App\SiteSetting::where('name',$setting)->first()->value;
 	}
 }
-if (!function_exists('searchLink')) {
+if (!function_exists('SendNotification')) {
 
-	function searchLink($type , $options) {
-		return route('search' , array_merge(array_except(request( )->input() , [$type]) ,[$type =>$options])) ;
+	function SendNotification($message ,$link ,$created_at ,$for_user_id) {
+		
+		$data['message']         = $message;
+		$data['link']            = $link;
+		$data['created_at']      = $created_at;
+		$data['for_user_id']     = $for_user_id;
+
+
+		$options = array(
+			'cluster' => env('PUSHER_APP_CLUSTER'),
+			'encrypted' => true
+		);
+
+		$pusher = new Pusher(
+			'b948a1dfc499f62a98af',
+			'9bf5496a37e72f62291d',
+			'634318',
+			$options
+		);
+
+		$pusher->trigger('Notify', 'send-message'.$for_user_id, $data);
 	}
 }
-

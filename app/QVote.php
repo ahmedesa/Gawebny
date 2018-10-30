@@ -72,15 +72,23 @@ class QVote extends Model
 		]);
 		if ($type == 1 ) {
 			Question::find($question_id)->increment('votes');
+/*
 			$user_question =User::find(Question::find($question_id)->user_id);
 
 			if ($user_id !=$user_question) {
-
+				
 				if ($user_question->notifications()->where('data','Like' ,'%"id":14%')->where('type' ,'App\Notifications\NewQUpvote')->get()) {
 					$user_question->notifications()->where('data','Like' ,'%"id":14%')->where('type' ,'App\Notifications\NewQUpvote')->delete();
 				}
-				$user_question->notify(new NewQUpvote(Question::find($question_id)));
+
+				$user_question->notify(new NewQUpvote(Question::find($question_id))); 
+				SendNotification( 
+					' <strong> '.trans('layout.new_upvote').' '. str_limit(Question::find($request->question_id)->title , 10).' </strong>'
+					,url('question/'.Question::find($request->question_id)->id.''.str_slug(Question::find($request->question_id)->title)) 
+					,'about a minute ago');
 			}
+			*/
+			
 
 		}elseif ($type == 0) {
 			Question::find($question_id)->decrement('votes');

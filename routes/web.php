@@ -43,6 +43,9 @@ Route::put('/settings1', 'UserController@updateUserSettings');
 Route::put('/settings/password', 'UserController@updateUserPassword');
 Route::get('/settings', 'UserController@informationSetting');
 Route::put('/settings', 'UserController@update');
+Route::get('/MarkAsREad', function() {
+	Auth::user()->unreadNotifications->markAsRead();
+});
 /*===============================
 =            website            =
 ===============================*/
