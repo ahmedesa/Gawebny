@@ -364,3 +364,10 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
   padding: 9.6px 12px;
   background: #eeeeee;
 }
+.highlight {
+    background-color: #fff34d;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px; 
+    border-radius: 5px;
+
+}
