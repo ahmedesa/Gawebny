@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('message');
-            $table->boolean('seen')->defualt(false);
+            $table->boolean('seen')->notNull()->defualt(false);
             $table->timestamps();
         });
     }

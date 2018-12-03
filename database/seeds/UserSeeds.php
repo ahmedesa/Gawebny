@@ -20,6 +20,7 @@ class UserSeeds extends Seeder
             'password' => Hash::make('admin')  , // secret
             'remember_token' => str_random(10),
             'admin' => true ,
+            'image' => 'defualt.png'
 
     ]);
     }
