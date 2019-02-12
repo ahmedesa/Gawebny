@@ -14,13 +14,13 @@ class DashbordController extends Controller
 {
 	public function index()
 	{
-		$allAnswer = Answer::all()->count();
-		$allQuestion = Question::all()->count();
-		$allUser = User::all()->count();
-		$lastQuestions =Question::orderBy("created_at",'desc')->take(5)->get();
-		$lastUsers =User::orderBy("created_at",'desc')->take(5)->get();
+		$allAnswer     = Answer::all()->count();
+		$allQuestion   = Question::all()->count();
+		$allUser       = User::all()->count();
+		$lastQuestions = Question::orderBy("created_at",'desc')->take(5)->get();
+		$lastUsers     = User::orderBy("created_at",'desc')->take(5)->get();
 		$TopCategories = Category::withCount('question')->latest('question_count')->take(5)->get();
-		$settings =SiteSetting::all();
+		$settings      = SiteSetting::all();
 		return view('dashbord.home.index',compact(
 			'allAnswer','allQuestion','allUser' ,'lastQuestions' ,'lastUsers',
 			'TopCategories' ,'settings'
