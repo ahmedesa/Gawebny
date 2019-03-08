@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateAnswerTable extends Migration
 {
@@ -19,8 +19,12 @@ class CreateAnswerTable extends Migration
             $table->integer('question_id');
             $table->integer('votes')->notNull()->default(0);
             $table->text('body');
-            $table->integer('best')->notNull()->default(0); 
+            $table->integer('best')->notNull()->default(0);
             $table->timestamps();
+            $table->foreign('question_id')
+                ->references('id')
+                ->on('question')
+                ->onDelete('cascade');
         });
     }
 

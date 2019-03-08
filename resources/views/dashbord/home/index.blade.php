@@ -475,7 +475,7 @@ Dashboard
 	
 	jQuery(document).ready(function () {
 		$.plot($("#m_flotcharts_9"),[
-			@foreach (\App\Category::percantage() as $key =>$cat)
+			@foreach ($categoryPercantage as $key =>$cat)
 			{
 				label: '{{$cat['name']}}',
 				data: {{$cat['value']}}

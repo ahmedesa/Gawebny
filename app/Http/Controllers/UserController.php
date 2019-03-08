@@ -50,12 +50,15 @@ class UserController extends Controller
 
 			return view('Gawebny.profile.saved' , compact('user' , 'saved_questions'));
 		}
+		
 		public function UserVotes($id)
 		{
 			$user = User::findOrFail($id);
 			$saved_questions = Question::with('userLikes')->get();
 			return view('Gawebny.profile.votes' , compact('user' , 'saved_questions'));
-		}public function UserAnswers($id)
+		}
+
+		public function UserAnswers($id)
 		{
 			$user = User::findOrFail($id);
 			if(request()->order){
@@ -68,6 +71,7 @@ class UserController extends Controller
 			}
 			return view('Gawebny.profile.answers' , compact('user' , 'user_answers'));
 		}
+
 		public function settings()
 		{
 			$user = User::findOrFail(Auth::id());
@@ -80,7 +84,8 @@ class UserController extends Controller
 			$user = User::findOrFail(Auth::id());
 			return view('Gawebny.profile.settings' , compact('user'));
 
-		}	
+		}
+
 		public function update(UserRequest $request )
 		{
 			$user = User::findOrFail(Auth::id());
@@ -92,6 +97,7 @@ class UserController extends Controller
 			$user->update($request->except(['_token','_method' ,'image'] ));
 			return back()->withFlashMessage('Settings Updated Successfully');
 		}
+
 		public function updateUserSettings(Request $request )
 		{
 			$user = User::findOrFail(Auth::id());
@@ -99,9 +105,7 @@ class UserController extends Controller
 				'username'=>'required|max:30|min:3|string|alpha_dash',
 				'email' => 'required|string|email|max:50|unique:users,email,'.$user->id,
 			]);
-			dd($request->all());
 			$user = User::findOrFail(Auth::id());
-		//dd($request->except(['_token','_method' ,'image'] ))
 			$user->update($request->except(['_token','_method' ,'image'] ));
 			return back()->withFlashMessage('Settings Updated Successfully');
 		}

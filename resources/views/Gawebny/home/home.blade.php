@@ -50,7 +50,7 @@
     <div class="ui-block alert alert-dismissible fade show" >
       <article class="hentry post">
         <div class="m-link">
-          <a href="{{ url('/question/'.$q->id.'/'.str_slug($q->title)) }}"  >
+          <a href="{{ $q->slug }}"  >
             <h4>{{$q->title}}</h4>
           </a>
           <div class="more">

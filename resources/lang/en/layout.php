@@ -31,6 +31,7 @@ layout
 'terms' => 'terms',
 'Contact_Us' => 'Contact Us',
 'all_terms' => 'Website Terms',
+'dashbord' => 'dashbord'
 
 
 

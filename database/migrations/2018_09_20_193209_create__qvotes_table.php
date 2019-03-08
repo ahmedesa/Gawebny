@@ -19,6 +19,14 @@ class CreateQvotesTable extends Migration
             $table->integer('vote');
             $table->integer('question_id');
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('question_id')
+                ->references('id')
+                ->on('question')
+                ->onDelete('cascade');
         });
     }
 

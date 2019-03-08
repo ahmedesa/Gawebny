@@ -19,8 +19,6 @@ class CreateSettingTable extends Migration
             $table->string('value');
             $table->timestamps();
 
-
-
     });
     }
 

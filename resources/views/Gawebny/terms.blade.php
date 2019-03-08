@@ -12,7 +12,7 @@
     <h6 class="my-4">{{ trans('layout.all_terms') }}</h6>
     <hr>
     <div class="my-4"> 
-      {{\App\SiteSetting::Terms()}}
+      {{$terms}}
     </div>
   </div>
 </div>

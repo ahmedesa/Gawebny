@@ -9,15 +9,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*==================================
+=            start page            =
+==================================*/
+
+Route::get('/', 'HomeController@index');
+
+
+/*=====  End of start page  ======*/
+
 /*================================
 =            Question            =
 ================================*/
-Route::get('/', 'QuestionController@index');
 Route::get('/question/save/{id}', 'QuestionController@SaveQuestion');
 Route::get('/question/unsave/{id}', 'QuestionController@UnSaveQuestion');
 Route::post('/question', 'QuestionController@create');
 Route::put('/question/{id}', 'QuestionController@edit');
-Route::get('/question/{id}/{slug?}', 'QuestionController@show');
+Route::get('/question/{id}/{slug?}', 'QuestionController@show')->name('question');
 Route::delete('/question/{id}', 'QuestionController@destroy');
 Route::post('question/upvote', 'QuestionController@upvote');
 Route::post('question/downvote', 'QuestionController@downvote');

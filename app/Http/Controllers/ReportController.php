@@ -57,9 +57,6 @@ class ReportController extends Controller
 			$category = Category::findOrFail($cat);
 			$question->category()->detach($category); 
 		}
-		QVote::where('question_id' , $id)->delete();
-		SavedQ::where('question_id' , $id)->delete();
-		Answer::where('question_id' , $id)->delete();
 		$question->delete();
 		return back()->withFlashMessage('The question Deleted Successfully');  
 	}

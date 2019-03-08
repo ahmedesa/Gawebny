@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
+use App\Question;
+use App\SiteSetting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
-/*    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-*/
     public function index()
     {
-        return view('home');
+        if (request()->tab) {
+            $tab = request()->tab;
+            switch ($tab) {
+                case "top":
+                    $question = Question::orderBy('votes', 'desc')->paginate(10);
+                    break;
+                case "featured":
+                    $question = Question::orderBy('created_at', 'desc')->paginate(10);
+                    break;
+                case "random":
+                    $question = Question::inRandomOrder()->paginate(10);
+                    break;
+            }
+            return view('Gawebny.home.home', compact('question'));
+        }
+        $question = Question::orderBy('id', 'desc')->paginate(10);
+        return view('Gawebny.home.home', compact('question'));
     }
 
     public function Notification()
@@ -25,6 +36,7 @@ class HomeController extends Controller
 
     public function Terms()
     {
-        return view('Gawebny.terms');
+        $terms = SiteSetting::Terms();
+        return view('Gawebny.terms' ,compact('terms'));
     }
 }
