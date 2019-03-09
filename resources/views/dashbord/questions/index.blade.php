@@ -1,13 +1,13 @@
 @extends('dashbord/layouts/layout')
 @section('title')
-Users
+category
 @endsection
 @section('header')
 @endsection
 @section('contant_title')
 <div class="mr-auto">
     <h3 class="m-subheader__title m-subheader__title--separator">
-        Users
+        Question
     </h3>
     <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
         <li class="m-nav__item m-nav__item--home">
@@ -19,9 +19,9 @@ Users
             -
         </li>
         <li class="m-nav__item">
-            <a href="#" class="m-nav__link">
+            <a class="m-nav__link">
                 <span class="m-nav__link-text">
-                    Users
+                    Question
                 </span>
             </a>
         </li>
@@ -56,6 +56,16 @@ Users
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                    <button type="button" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-toggle="modal" data-target="#m_modal_4">
+                        <span>
+                            <i class="flaticon-user-add"></i>
+                            <span>
+                                New category
+                            </span>
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
         <!--end: Search Form -->
@@ -64,56 +74,55 @@ Users
             <thead>
                 <tr>
                     <th title="Field #1">
-                        User ID
+                        Question ID
                     </th>
                     <th title="Field #2">
-                        image
+                        title
                     </th>
                     <th title="Field #3">
-                        name
+                        body
                     </th>
                     <th title="Field #4">
-                        email
+                        anonymous
                     </th>
                     <th title="Field #5">
-                        Question Count
+                        User
                     </th>
-                    <th title="Field #10">
-                        Action
+                    <th title="Field #6">
+                        votes
+                    </th>
+                    <th title="Field #7">
+                        Answer Num
+                    </th>
+                    <th title="Field #8">
+                        created at
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($categories as $cat)
                 <tr>
                     <td>
-                        {{$user->id}}
+                        {{$cat->id}}
                     </td>
                     <td>
-                        <div class="m-widget4__img m-widget4__img--pic">
-                            <img style="max-width: 41px !important;" src="{{ asset('Gawebny/img/'.$user->image) }}" alt="">
-                        </div>
+                        {{$cat->name_en}}
                     </td>
                     <td>
-                        {{$user->name}}
+                        {{$cat->name_ar}}
                     </td>
                     <td>
-                        {{$user->email}}
-                    </td>
-                    <td>
-                        <div class="m-badge m-badge--info">{{$user->question->count()}} </div>
+                        {{$cat->question->count()}}
                     </td>
                     <td>
                         <span style="overflow: visible; width: 110px;">
-                            <a href="{{ url('dashbord/users/'.$user->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="{{ url('/dashbord/users/'.$user->id.'/delete') }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                            <a href="{{ url('/dashbord/category/'.$cat->id.'/delete') }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill cat-remove" data-id="{{$cat->id}}" title="Delete">
                                 <i class="la la-trash"></i>
-                            </a> </span>
+                            </a>
+                        </span>
                     </td>
-                    @endforeach
                 </tr>
+                @endforeach
             </tbody>
         </table>
         <!--end: Datatable -->

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Question;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
@@ -15,17 +16,17 @@ class Answer extends Model
 
     ];
     protected $searchable = [
-        /**
-         * Columns and their priority in search results.
-         * Columns with higher values are more important.
-         * Columns with equal values have equal importance.
-         *
-         * @var array
-         */
         'columns' => [
             'answer.body' => 10,
         ],
     ];
+    protected $appends = ['slug'];
+
+    public function getSlugAttribute()
+    {
+        $question = Question::find($this->question_id);
+        return route('question',['id' =>$this->question_id ,'slug' => str_slug($question->title) ]).'#comment'.$this->id;
+    }
     public function question()
     {
         return $this->belongsTo(Question::class);

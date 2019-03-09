@@ -22,6 +22,7 @@ class ContactController extends Controller
 	public function dashbordIndex()
 	{
 		$messages = Contact::orderBy('created_at' ,'desc')->get();
+
 		return view('dashbord.messages.index',compact('messages'));
 
 	}
@@ -30,11 +31,13 @@ class ContactController extends Controller
 		$message = Contact::findOrFail($id);
 		$message->seen = true ;
 		$message->save();
+
 		return view('dashbord.messages.view',compact('message'));
 	}
 	public function destroy($id)
 	{
 		Report::findOrFail($id)->delete();
+		
 		return back()->withFlashMessage('deleted successfully');
 	}
 }

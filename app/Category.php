@@ -23,12 +23,6 @@ class Category extends Model
 	}
 	public function name()
 	{
-		if (App::getLocale() == "en") {
-			return $this->name_en;
-		}
-
-		if (App::getLocale() == "ar") {
-			return $this->name_ar;
-		}
+		return $this->{'name_'.App::getLocale()};
 	}
 }

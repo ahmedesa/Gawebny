@@ -104,7 +104,7 @@ Route::group(['middleware' => ['web','admin']], function() {
 	Route::get('/dashbord/messages/{id}' , 'ContactController@show');
 	Route::get('/dashbord/messages/{id}/delete' , 'ContactController@destroy');
 
-
+    Route::get('/dashbord/answers' , 'DashbordController@answers');
 	Route::get('/dashbord/reports' , 'ReportController@index');
 	Route::get('/dashbord/reports/{id}' , 'ReportController@show');
 	Route::get('/dashbord/reports/{id}/delete' , 'ReportController@destroy');

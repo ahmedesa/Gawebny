@@ -1,13 +1,13 @@
 @extends('dashbord/layouts/layout')
 @section('title')
-Users
+Answers
 @endsection
 @section('header')
 @endsection
 @section('contant_title')
 <div class="mr-auto">
     <h3 class="m-subheader__title m-subheader__title--separator">
-        Users
+        Answers
     </h3>
     <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
         <li class="m-nav__item m-nav__item--home">
@@ -19,9 +19,9 @@ Users
             -
         </li>
         <li class="m-nav__item">
-            <a href="#" class="m-nav__link">
+            <a class="m-nav__link">
                 <span class="m-nav__link-text">
-                    Users
+                    Answers
                 </span>
             </a>
         </li>
@@ -29,14 +29,6 @@ Users
 </div>
 @endsection
 @section('content')
-@if($errors->any())
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-    @foreach ($errors->all() as $error)
-    <div>{{ $error }}</div>
-    @endforeach
-</div>
-@endif
 <div class="m-portlet m-portlet--mobile">
     <div class="m-portlet__body">
         <!--begin: Search Form -->
@@ -56,6 +48,16 @@ Users
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                    <button type="button" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" data-toggle="modal" data-target="#m_modal_4">
+                        <span>
+                            <i class="flaticon-user-add"></i>
+                            <span>
+                                New category
+                            </span>
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
         <!--end: Search Form -->
@@ -64,56 +66,63 @@ Users
             <thead>
                 <tr>
                     <th title="Field #1">
-                        User ID
+                        Answer ID
                     </th>
                     <th title="Field #2">
-                        image
+                        User Name
                     </th>
                     <th title="Field #3">
-                        name
+                        Body Name
                     </th>
                     <th title="Field #4">
-                        email
+                        Created At
                     </th>
                     <th title="Field #5">
-                        Question Count
+                        Is Best
                     </th>
-                    <th title="Field #10">
-                        Action
+                    <th title="Field #6">
+                        Votes
+                    </th>
+                    <th title="Field #6">
+                        actions
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($answers as $ans)
                 <tr>
                     <td>
-                        {{$user->id}}
+                        {{$ans->id}}
                     </td>
                     <td>
-                        <div class="m-widget4__img m-widget4__img--pic">
-                            <img style="max-width: 41px !important;" src="{{ asset('Gawebny/img/'.$user->image) }}" alt="">
-                        </div>
+                        <a href="{{ url('dashbord/users/'.$ans->user_id) }}"> {{$ans->user->name}} </a>
                     </td>
                     <td>
-                        {{$user->name}}
+                        {!!str_limit($ans->body,200)!!}
                     </td>
                     <td>
-                        {{$user->email}}
+                        {{$ans->created_at->diffForHumans()}}
                     </td>
                     <td>
-                        <div class="m-badge m-badge--info">{{$user->question->count()}} </div>
+                        @if ($ans->best ==1)
+                        <span class="m-badge m-badge--success"></span>
+                        @endif
+                    </td>
+                    <td>
+                        {{$ans->votes}}
                     </td>
                     <td>
                         <span style="overflow: visible; width: 110px;">
-                            <a href="{{ url('dashbord/users/'.$user->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
+                             <a href="{{ $ans->slug }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a href="{{ url('/dashbord/users/'.$user->id.'/delete') }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                            <a href="{{ url('/dashbord/category/'.$ans->id.'/delete') }}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill cat-remove" data-id="{{$ans->id}}" title="Delete">
                                 <i class="la la-trash"></i>
-                            </a> </span>
+                            </a>
+                        </span>
                     </td>
-                    @endforeach
                 </tr>
+                @endforeach
             </tbody>
         </table>
         <!--end: Datatable -->

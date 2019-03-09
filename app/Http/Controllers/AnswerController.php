@@ -53,12 +53,14 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         Answer::findOrFail($id)->delete();
+
         return back()->withFlashMessage('The Answer Deleted Successfully');
     }
 
     public function MakeBest($id, AnswerService $answerService)
     {
         $answerService->MakeBest($id, Answer::findOrFail($id)->question->id);
+        
         return back();
     }
 
@@ -66,7 +68,7 @@ class AnswerController extends Controller
     {
         if ($request->ajax()) {
             $id = $request->answer_id;
-                       AVote::upvote($id, Auth::id());
+            AVote::upvote($id, Auth::id());
             $AnsVotesCount = Answer::find($id)->votes;
             return $AnsVotesCount;
         }

@@ -47,7 +47,7 @@
             <div class="ui-block alert alert-dismissible fade show">
                 <article class="hentry post">
                     <div class="m-link">
-                        <a href="{{ url('/question/'.$q->question_id.'/'.str_slug($q->body)).'#comment'.$q->id}}">
+                        <a href="{{ $q->slug}}">
                             <div class="results">
                                 <h4>{!!str_limit($q->body , 300)!!}</h4>
                             </div>
@@ -59,7 +59,8 @@
                         </div>
                     </div>
                     <div class="post-additional-info inline-items">
-                        {{ trans('search.Answer_For') }} <a href="{{ url('/question/'.$q->question_id.'/'.str_slug($q->question->title) ) }}">{{str_limit($q->question->title , 50)}} </a>
+                        {{ trans('search.Answer_For') }}
+                        <a href="{{ $q->question->slug }}">{{str_limit($q->question->title , 50)}} </a>
                     </div>
                 </article>
             </div>
