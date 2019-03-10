@@ -23,7 +23,7 @@
                 <label for="category-text" class="col-form-label">{{trans('layout.category')}}</label>
                 <br>
                 <select style="width: 300px" required class="category-multiple form-control " name="category[]" multiple="multiple">
-                  @foreach (App\Category::all() as $cat)
+                  @foreach ($categories as $cat)
                       <option value="{{$cat->id}}">{{$cat->name()}}</option>
                   @endforeach
                 </select>

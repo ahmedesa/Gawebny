@@ -1,5 +1,7 @@
 <?php
 
+use App\SiteSetting;
+use Illuminate\Support\Facades\App;
 use Pusher\Pusher;
 
 if (!function_exists('uplodeImg')) {
@@ -25,10 +27,14 @@ if (!function_exists('CheckExistMention')) {
     }
 }
 
-if (!function_exists('Setting')) {
-    function Setting($setting)
+if (!function_exists('Setting_')) {
+    function Setting_($setting, $key)
     {
-        return App\SiteSetting::where('name', $setting)->first()->value;
+        if ($setting->where('name', $key)->first()) {
+            return $setting->where('name', $key)->first()->value;
+        }else{
+            return $setting->where('name', $key.'_'.App::getLocale())->first()->value;
+        }
     }
 }
 if (!function_exists('SendNotification')) {

@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title')|{{\App\SiteSetting::name()}}</title>
-<link rel="icon" href="{{ asset('Gawebny/img/'.Setting('logo')) }}">
+<title>@yield('title')|{{setting_($setting,'sitename')}}</title>
+<link rel="icon" href="{{ asset('Gawebny/img/'.setting_($setting,'logo')) }}">
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
 <link href="{{ asset('Gawebny/css/app.css') }}" rel="stylesheet">
 <link href="{{ asset('css/alertify.min.css') }}" rel="stylesheet">

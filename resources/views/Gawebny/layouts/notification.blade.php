@@ -14,29 +14,31 @@
     </div>
     <div class="notification">
       @if(!Auth::user()->notifications->isEmpty())
-      @foreach (Auth::user()->notifications()->take(5)->get()  as $n)
-      @if ($n->type == 'App\Notifications\NewAnswer')
-      <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
-        <strong> {{ trans('layout.new_question') }} {{str_limit($n->data['title'] , 10)}} </strong>
-        <small> {{$n->created_at->diffForHumans()}} </small>
-      </a>
-      @endif
-      @if ($n->type == 'App\Notifications\NewUser')
-      <a class="dropdown-item">{{ trans('layout.wellcome') }}</a>
-      @endif
-      @if ($n->type == 'App\Notifications\NewQUpvote')
-      <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
-        <strong> {{ trans('layout.new_upvote') }} {{str_limit($n->data['title'] , 10)}} </strong>
-        <small> {{$n->created_at->diffForHumans()}} </small>
-      </a>
-      @endif
-      @if ($n->type == 'App\Notifications\NewMention')
-      <a href="{{ url('/question/'.$n->data['question_id'].'#comment'.$n->data['id'] )}}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
-        <strong> {{\App\User::find($n->data['user_id'])->name}}</strong> {{ trans('layout.new_mention') }} {{strip_tags(str_limit($n->data['body'] , 10))}}
-        <small> {{$n->created_at->diffForHumans()}} </small>
-      </a>
-      @endif
-      @endforeach
+       @foreach (Auth::user()->notifications()->take(5)->get()  as $n)
+        @switch($n->type)
+          @case('App\Notifications\NewAnswer')
+              <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
+                <strong> {{ trans('layout.new_question') }} {{str_limit($n->data['title'] , 10)}} </strong>
+                <small> {{$n->created_at->diffForHumans()}} </small>
+              </a>
+              @break
+          @case('App\Notifications\NewUser')
+              <a class="dropdown-item">{{ trans('layout.wellcome') }}</a>
+              @break
+          @case('App\Notifications\NewQUpvote')
+               <a href="{{ url('question/'.$n->data['id'].'/'.str_slug($n->data['title'])) }}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
+                  <strong> {{ trans('layout.new_upvote') }} {{str_limit($n->data['title'] , 10)}} </strong>
+                  <small> {{$n->created_at->diffForHumans()}} </small>
+                </a>
+                @break
+          @case('App\Notifications\NewMention')
+               <a href="{{ url('/question/'.$n->data['question_id'].'#comment'.$n->data['id'] )}}" class="dropdown-item {{$n->read_at == null ? 'unRead' : ''}}">
+                 <strong> {{\App\User::find($n->data['user_id'])->name}}</strong> {{ trans('layout.new_mention') }} {{strip_tags(str_limit($n->data['body'] , 10))}}
+                 <small> {{$n->created_at->diffForHumans()}} </small>
+                </a>
+                @break
+        @endswitch
+       @endforeach
       @else
       <a class="dropdown-item">{{ trans('layout.no_notification') }}</a>
       @endif

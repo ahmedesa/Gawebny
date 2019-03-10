@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse">
     <div class="container">
         <a style="
-           background-image: url('{{ asset('Gawebny/img/'.\App\SiteSetting::where('name' ,'logo')->first()->value) }}');" class="navbar-brand mylogo" href="#"></a>
+           background-image: url('{{setting_($setting,'logo')}}');" class="navbar-brand mylogo" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

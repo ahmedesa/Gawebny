@@ -107,7 +107,7 @@
         <h6 class="my-4">{{ trans('category.Categories') }}</h6>
         <hr>
         <div class="nav flex-column nav-pills nav-stacked" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          @foreach (App\Category::all() as $cat)
+          @foreach ($categories as $cat)
           <a class="nav-link {{ request()->is('category/'.$cat->name_en) ? 'active' : '' }}"  href="{{ url('/category/'.$cat->name_en) }}" >{{$cat->name()}}</a>
           @endforeach
         </div>
