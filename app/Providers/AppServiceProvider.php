@@ -22,12 +22,9 @@ class AppServiceProvider extends ServiceProvider
 
         $setting = SiteSetting::getAllSettings();
         view()->share('setting', $setting);
-        view()->composer(['Gawebny.home.askmodel','Gawebny.home.home','Gawebny.category.category'], function($view) {
-                $view->with('categories', Category::all());
-            });
-        view()->composer(['Gawebny.layouts.notification'], function($view) {
-                $view->with('unReadNotificationCount', Auth::user()->unreadNotifications()->count());
-            });
+        view()->composer(['Gawebny.home.askmodel', 'Gawebny.home.home', 'Gawebny.category.category'], function ($view) {
+            $view->with('categories', Category::all());
+        });
     }
 
     /**
