@@ -15,8 +15,8 @@ class CreateAnswerTable extends Migration
     {
         Schema::create('answer', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('question_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('question_id');
             $table->integer('votes')->notNull()->default(0);
             $table->text('body');
             $table->integer('best')->notNull()->default(0);
@@ -24,6 +24,10 @@ class CreateAnswerTable extends Migration
             $table->foreign('question_id')
                 ->references('id')
                 ->on('question')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }

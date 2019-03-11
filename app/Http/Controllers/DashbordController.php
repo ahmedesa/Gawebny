@@ -19,7 +19,7 @@ class DashbordController extends Controller
         $lastQuestions = Question::orderBy("created_at", 'desc')->take(5)->get();
         $lastUsers = User::orderBy("created_at", 'desc')->take(5)->get();
         $TopCategories = Category::withCount('question')->latest('question_count')->take(5)->get();
-        $settings = SiteSetting::all();
+        $settings = SiteSetting::getAllSettings();
         $categoryPercantage = $categoryService->percantage();
         return view('dashbord.home.index', compact(
             'allAnswer',

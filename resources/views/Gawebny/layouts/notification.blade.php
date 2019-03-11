@@ -4,13 +4,13 @@
     <span> <i class="fa fa-bell"></i>
       {{ trans('layout.notification') }}
       <span  class="badge badge-danger NotCount notification-icon "
-        data-count="{{Auth::user()->unreadNotifications()->count()}}">
+        data-count="{{$unReadNotificationCount}}">
       </span>
     </span>
   </a>
   <div class="dropdown-menu" >
     <div class="dropdown-toolbar">
-      <div class="dropdown-toolbar-title">Notifications (<span class="notif-count">{{Auth::user()->unreadNotifications()->count()}}</span>)</div>
+      <div class="dropdown-toolbar-title">Notifications (<span class="notif-count">{{$unReadNotificationCount}}</span>)</div>
     </div>
     <div class="notification">
       @if(!Auth::user()->notifications->isEmpty())

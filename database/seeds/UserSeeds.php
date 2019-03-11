@@ -23,5 +23,14 @@ class UserSeeds extends Seeder
             'image' => 'defualt.png'
 
     ]);
+            User::create( [
+            'name'=>'ahmed',
+            'email'=>'a@a.com',
+            'password' => Hash::make('123456')  , // secret
+            'remember_token' => str_random(10),
+            'admin' => false ,
+            'image' => 'defualt.png'
+
+    ]);
     }
 }

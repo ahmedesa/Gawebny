@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{{\App\SiteSetting::name()}} | Login</title>
+  <title>{{setting_($setting,'sitename')}} | Login</title>
   
   <link href="{{ asset('Gawebny/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
   <link href="{{ asset('Gawebny/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -14,7 +14,7 @@
     <div style="width: 70%" id="login-overlay" class="modal-dialog">
       <div  class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel"><center><div class="text-danger"> {{\App\SiteSetting::name()}}</div> </center></h4>
+          <h4 class="modal-title" id="myModalLabel"><center><div class="text-danger"> {{setting_($setting,'sitename')}}</div> </center></h4>
       </div>
       <div class="modal-body">
           <div class="row">

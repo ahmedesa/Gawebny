@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $category = Category::where('name_en', $slug)->get();
         $question = $questionService->questionInCategory($slug);
-        $questioncount = $questionService->questionInCategory($slug)->count();
+        $questioncount = $question->count();
         return view('Gawebny.category.category', compact('category', 'question', 'questioncount'));
     }
 

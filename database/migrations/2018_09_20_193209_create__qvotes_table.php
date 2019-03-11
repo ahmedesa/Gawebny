@@ -15,9 +15,9 @@ class CreateQvotesTable extends Migration
     {
         Schema::create('qvotes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->unsignedInteger('user_id');
             $table->integer('vote');
-            $table->integer('question_id');
+            $table->unsignedInteger('question_id');
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')
