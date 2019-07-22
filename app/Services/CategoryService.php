@@ -4,7 +4,7 @@ use App\Category;
 use App\Question;
 class CategoryService
 {
-   public  function percantage()
+   public  function percantage() : ?array
     {
         $all_question_count =   Question::all()->count();
         $all_category = Category::with('question')->withCount('question')->get();

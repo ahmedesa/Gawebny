@@ -48,12 +48,7 @@ class QuestionController extends Controller
 
     public function destroy($id)
     {
-        $question = Question::findOrFail($id);
-        foreach ($question->category as $cat) {
-            $category = Category::findOrFail($cat);
-            $question->category()->detach($category);
-        }
-        $question->delete();
+        $this->questionService->deleteQuestion($id);
         return redirect('/')->withFlashMessage('The question Deleted Successfully');
     }
 

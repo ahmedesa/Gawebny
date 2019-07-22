@@ -78,7 +78,7 @@ class AnswerController extends Controller
     {
         if ($request->ajax()) {
             $id = $request->answer_id;
-                        AVote::downvote($id, Auth::id());
+            AVote::downvote($id, Auth::id());
 
             $AnsVotesCount = Answer::find($id)->votes;
             return $AnsVotesCount;

@@ -59,4 +59,15 @@ class QuestionService
             ->get();
         return $best->merge($rest_answers);
     }
+    public function deleteQuestion($id)
+    {
+        $question = Question::findOrFail($id);
+
+        foreach ($question->category as $cat) {
+            $category = Category::findOrFail($cat);
+            $question->category()->detach($category);
+        }
+        
+        $question->delete();
+    }
 }

@@ -113,5 +113,5 @@ Route::group(['middleware' => ['web','admin']], function() {
 
 });
 /*=====  End of dashbord  ======*/
-//auth()->login(\App\User::find(1));
+auth()->login(\App\User::find(1));
 //});
