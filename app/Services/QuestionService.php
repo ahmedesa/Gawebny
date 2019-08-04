@@ -17,15 +17,15 @@ class QuestionService
     public function create($request)
     {
         if (substr(trim($request->title), -1) == '?') {
-            $nweTitle = trim($request->title);
+            $new_title = trim($request->title);
         } else {
-            $nweTitle = trim($request->title) . '?';
+            $new_title = trim($request->title) . '?';
         }
         $question = new Question;
         if (isset($request->anonymous)) {
             $question->anonymous = $request->anonymous;
         }
-        $question->title = $nweTitle;
+        $question->title = $new_title;
         $question->body = $request->body;
         $question->user_id = Auth::id();
         $question->save();

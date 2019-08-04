@@ -8,6 +8,7 @@ use App\QVote;
 use App\Question;
 use App\SavedQ;
 use App\Services\QuestionService;
+use App\Utilities\LastVistedQuestions;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -27,9 +28,10 @@ class QuestionController extends Controller
         return back()->withFlashMessage('Question Posted Successfully');
     }
 
-    public function show($id)
+    public function show($id , LastVistedQuestions $LastVistedQuestions)
     {
         $question = Question::findOrFail($id);
+        $LastVistedQuestions->addQuestion($question->id);
         $question->increment('views');
         $all_answeres = $this->questionService->getAllAnswers($question);
         $answerCount = $question->answer()->count();
@@ -56,7 +58,7 @@ class QuestionController extends Controller
     {
         if ($request->ajax()) {
             $id = $request->question_id;
-                        QVote::upvote($id, Auth::id());
+            QVote::upvote($id, Auth::id());
             $QVotesCount = Question::find($id)->votes;
             return $QVotesCount;
         }

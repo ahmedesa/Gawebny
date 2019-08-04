@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Question;
 use App\SiteSetting;
+use App\Utilities\LastVistedQuestions;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(LastVistedQuestions $LastVistedQuestions)
     {
         if (request()->tab) {
             $tab = request()->tab;
@@ -26,7 +27,8 @@ class HomeController extends Controller
             return view('Gawebny.home.home', compact('question'));
         }
         $question = Question::orderBy('id', 'desc')->paginate(10);
-        return view('Gawebny.home.home', compact('question'));
+        $history_questions= $LastVistedQuestions->getQuestion();
+        return view('Gawebny.home.home', compact('question','history_questions'));
     }
 
     public function Notification()

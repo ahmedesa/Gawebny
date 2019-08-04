@@ -11,6 +11,7 @@
   <div class="row">
     <!-- /.col-lg-3 -->
     <div class="col-lg-9">
+      @include('Gawebny.home.lastVistedQuestions', ['history_questions' =>$history_questions])
       <div class="ui-block">
         <article class="hentry post">
           <div class="post__author author vcard inline-items">
@@ -34,6 +35,7 @@
           </center>
         </article>
       </div>
+
       <ul class="nav nav-tabs" id="myTab" role="tablist">
        <li class="nav-item">
         <a class="nav-link {{ request()->tab == 'featured' ? 'active' : '' }}" id="profile-tab"  href="{{ url('/?tab=featured') }}" role="tab" aria-controls="profile" aria-selected="false">{{ trans('home.featured') }}</a>
