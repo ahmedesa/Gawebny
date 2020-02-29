@@ -29,9 +29,9 @@
 ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_10.PNG)
  ------------- ------------- ------------- ------------- ------------- ------------- ------------- 
  # Dashbord
- ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_11.PNG)
+ ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_11.png)
  ------------- ------------- ------------- ------------- ------------- ------------- ------------- 
- ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_12.PNG)
+ ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_12.png)
  ------------- ------------- ------------- ------------- ------------- ------------- ------------- 
  ![Test Image 1](https://github.com/ahmedesa/images/blob/master/images/gawebny_13.PNG)
  ------------- ------------- ------------- ------------- ------------- ------------- ------------- 
